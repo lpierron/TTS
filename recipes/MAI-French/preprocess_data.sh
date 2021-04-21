@@ -13,12 +13,7 @@ mkdir -p /tmp/tts
 # copy MAILABS dataset
 cp ${dataset_path} /tmp/tts
 # decompress
-tar -xjf /tmp/tts/monsieur_lecoq.tar.xz -C /tmp/tts
+tar -xJf /tmp/tts/monsieur_lecoq.tar.xz -C /tmp/tts
 # compute dataset mean and variance for normalization
+conda activate tf
 python ../../TTS/bin/compute_statistics.py --config_path model_config.json --out_path scale_stats.npy
-
-# training ....
-# change the GPU id if needed
-# CUDA_VISIBLE_DEVICES="0" python ../../TTS/train_tacotron.py --config_path model_config.json
-# train vocoder ...
-# CUDA_VISIBLE_DEVICES="0" python TTS/vocoder/train.py --config_path vocoder_config.json

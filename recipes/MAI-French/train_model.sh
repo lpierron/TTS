@@ -1,25 +1,29 @@
-# download LJSpeech dataset
-wget http://data.keithito.com/data/speech/LJSpeech-1.1.tar.bz2
-# decompress
-tar -xjf LJSpeech-1.1.tar.bz2
-# create train-val splits
-shuf LJSpeech-1.1/metadata.csv > LJSpeech-1.1/metadata_shuf.csv
-head -n 12000 LJSpeech-1.1/metadata_shuf.csv > LJSpeech-1.1/metadata_train.csv
-tail -n 1100 LJSpeech-1.1/metadata_shuf.csv > LJSpeech-1.1/metadata_val.csv
-# get TTS to your local
-git clone https://github.com/coqui-ai/TTS
-# install deps
-sudo apt-get install espeak
-pip install soundfile
-# checkout a specific version
-cd TTS
-git checkout v0.0.12
-python setup.py install
-cd ..
-# compute dataset mean and variance for normalization
-python TTS/compute_statistics.py --config_path model_config.json --out_path ./
+#!/bin/bash
+
+# PATHS
+home_path="/srv/storage/talc3@talc-data.nancy/multispeech/calcul/users/lpierron"
+corpus_path=${home_path}/mailabs
+
+output_path="${home_path}/Models/LJSpeech/"
+phoneme_cache_path="/tmp/tts/phoneme_cache/"
+dataset_path="${corpus_path}/monsieur_lecoq.tar.xz"
+
+# Make a wworking directory
+mkdir -p /tmp/tts
+# copy MAILABS dataset
+cp ${dataset_path} /tmp/tts
+# decompress dataset
+tar -xJf /tmp/tts/monsieur_lecoq.tar.xz -C /tmp/tts
+# Copy phoneme cache
+rsync -a "${home_path}/Models/phoneme_cache_fr_ezwa/" "${phoneme_cache_path}"
+
+# Testing avalibality of GPUs
+nvidia-smi -L
+gpus=$(nvidia-smi --query-gpu=index --format=csv,noheader | paste -s -d,)
+
 # training ....
 # change the GPU id if needed
-CUDA_VISIBLE_DEVICES="0" python TTS/train.py --config_path model_config.json
+conda activate tf
+CUDA_VISIBLE_DEVICES="$gpus" python ../../TTS/train_tacotron.py --config_path model_config.json
 # train vocoder ...
 # CUDA_VISIBLE_DEVICES="0" python TTS/vocoder/train.py --config_path vocoder_config.json
