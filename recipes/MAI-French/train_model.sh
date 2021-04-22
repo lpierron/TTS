@@ -1,6 +1,21 @@
 #!/bin/bash -l
 
-if [ -f ~/.bashrc ]; then . ~/.bashrc; fi
+eval $(/home/lpierron/.linuxbrew/bin/brew shellenv)
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/lpierron/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/lpierron/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/lpierron/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/lpierron/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 
 # PATHS
 home_path="/srv/storage/talc3@talc-data.nancy/multispeech/calcul/users/lpierron"
@@ -26,6 +41,6 @@ gpus=$(nvidia-smi --query-gpu=index --format=csv,noheader | paste -s -d,)
 # training ....
 # change the GPU id if needed
 conda activate tf
-CUDA_VISIBLE_DEVICES="$gpus" python ../../TTS/train_tacotron.py --config_path model_config.json
+CUDA_VISIBLE_DEVICES="$gpus" python ../../TTS/bin/train_tacotron.py --config_path model_config.json
 # train vocoder ...
 # CUDA_VISIBLE_DEVICES="0" python TTS/vocoder/train.py --config_path vocoder_config.json
