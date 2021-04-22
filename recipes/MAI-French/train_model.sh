@@ -15,7 +15,7 @@ mkdir -p /tmp/tts
 # copy MAILABS dataset
 cp -u ${dataset_path} /tmp/tts
 # decompress dataset
-tar -xJf -k /tmp/tts/monsieur_lecoq.tar.xz -C /tmp/tts
+tar -xJf /tmp/tts/monsieur_lecoq.tar.xz -C /tmp/tts -k
 # Copy phoneme cache
 rsync -a "${home_path}/Models/phoneme_cache_fr_ezwa/" "${phoneme_cache_path}"
 
