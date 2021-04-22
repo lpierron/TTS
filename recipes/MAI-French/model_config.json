@@ -1,6 +1,6 @@
 {
     "model": "Tacotron2",
-    "run_name": "mailabs-fr-ddc"",
+    "run_name": "mailabs-fr-ddc",
     "run_description": "tacotron2 French MaiLABS with DDC and differential spectral loss. Insipred from en-ljspeech-tacotron2-ddc for Vocoder HifiGan2",
 
     // AUDIO PARAMETERS
@@ -155,8 +155,9 @@
         [
             {
                 "name": "mailabs",
+		"speaker_name": "ezwa",
                 "path": "/tmp/tts",
-                "meta_file_train": "metadata.csv",
+                "meta_file_train": null,
                 "meta_file_val": null
             }
         ]

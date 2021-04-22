@@ -1,8 +1,10 @@
  #!/bin/bash
 
+if [ -f ~/.bashrc ]; then . ~/.bashrc; fi
+
  # PATHS
  home_path="/srv/storage/talc3@talc-data.nancy/multispeech/calcul/users/lpierron"
- corpus_path=${home_path}/mailabs
+ corpus_path=${home_path}/mailabs/fr_FR
 
  output_path="${home_path}/Models/LJSpeech/"
  phoneme_cache_path="/tmp/tts/phoneme_cache_fr_ezwa"
