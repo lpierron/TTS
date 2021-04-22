@@ -29,7 +29,7 @@
         "num_mels": 80,         // size of the mel spec frame.
         "mel_fmin": 0.0,        // minimum freq level for mel-spec. ~50 for male and ~95 for female voices. Tune for dataset!!
         "mel_fmax": 8000.0,     // maximum freq level for mel-spec. Tune for dataset!!
-        "spec_gain": 1.0,         // scaler value appplied after log transform of spectrogram.
+        "spec_gain": 1,         // scaler value appplied after log transform of spectrogram.
 
         // Normalization parameters
         "signal_norm": true,    // normalize spec values. Mean-Var normalization if 'stats_path' is defined otherwise range normalization defined by the other params.
@@ -108,7 +108,7 @@
     "transition_agent": false,     // enable/disable transition agent of forward attention.
     "location_attn": true,         // enable_disable location sensitive attention. It is enabled for TACOTRON by default.
     "bidirectional_decoder": false,  // use https://arxiv.org/abs/1907.09006. Use it, if attention does not work well with your dataset.
-    "double_decoder_consistency": true,  // use DDC explained here https://erogol.com/solving-attention-problems-of-tts-models-with-double-decoder-consistency-draft/
+    "double_decoder_consistency": false,  // use DDC explained here https://erogol.com/solving-attention-problems-of-tts-models-with-double-decoder-consistency-draft/
     "ddc_r": 7,                           // reduction rate for coarse decoder.
 
     // STOPNET
