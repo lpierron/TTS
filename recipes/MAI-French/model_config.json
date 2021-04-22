@@ -142,7 +142,7 @@
     // PHONEMES
     "phoneme_cache_path": "/tmp/tts/phoneme_cache/",  // phoneme computation is slow, therefore, it caches results in the given folder.
     "use_phonemes": true,           // use phonemes instead of raw characters. It is suggested for better pronounciation.
-    "phoneme_language": "fr",     // depending on your target language, pick one from  https://github.com/bootphon/phonemizer#languages
+    "phoneme_language": "fr-fr",     // depending on your target language, pick one from  https://github.com/bootphon/phonemizer#languages
 
     // MULTI-SPEAKER and GST
     "use_speaker_embedding": false,      // use speaker embedding to enable multi-speaker learning.
