@@ -1,5 +1,7 @@
 #!/bin/bash
 
+if [ -f ~/.bashrc ]; then . ~/.bashrc; fi
+
 # PATHS
 home_path="/srv/storage/talc3@talc-data.nancy/multispeech/calcul/users/lpierron"
 corpus_path=${home_path}/mailabs
@@ -11,9 +13,9 @@ dataset_path="${corpus_path}/monsieur_lecoq.tar.xz"
 # Make a wworking directory
 mkdir -p /tmp/tts
 # copy MAILABS dataset
-cp ${dataset_path} /tmp/tts
+cp -u ${dataset_path} /tmp/tts
 # decompress dataset
-tar -xJf /tmp/tts/monsieur_lecoq.tar.xz -C /tmp/tts
+tar -xJfk /tmp/tts/monsieur_lecoq.tar.xz -C /tmp/tts
 # Copy phoneme cache
 rsync -a "${home_path}/Models/phoneme_cache_fr_ezwa/" "${phoneme_cache_path}"
 

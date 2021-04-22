@@ -13,9 +13,9 @@ if [ -f ~/.bashrc ]; then . ~/.bashrc; fi
  # Make a wworking directory
 mkdir -p /tmp/tts
 # copy MAILABS dataset
-cp ${dataset_path} /tmp/tts
+cp -u ${dataset_path} /tmp/tts
 # decompress
-tar -xJf /tmp/tts/monsieur_lecoq.tar.xz -C /tmp/tts
+tar -xJfk /tmp/tts/monsieur_lecoq.tar.xz -C /tmp/tts
 # compute dataset mean and variance for normalization
 conda activate tf
 python ../../TTS/bin/compute_statistics.py --config_path model_config.json --out_path scale_stats.npy
