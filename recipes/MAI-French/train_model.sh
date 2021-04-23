@@ -40,7 +40,7 @@ gpus=$(nvidia-smi --query-gpu=index --format=csv,noheader | paste -s -d,)
 
 # training ....
 # change the GPU id if needed
-conda activate tf
+conda activate tts
 CUDA_VISIBLE_DEVICES="$gpus" python ../../TTS/bin/train_tacotron.py --config_path model_config.json
 # train vocoder ...
 # CUDA_VISIBLE_DEVICES="0" python TTS/vocoder/train.py --config_path vocoder_config.json
