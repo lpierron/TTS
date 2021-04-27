@@ -52,7 +52,8 @@ with open('README.md', "r", encoding="utf-8") as readme_file:
     README = readme_file.read()
 
 exts = [Extension(name='TTS.tts.layers.glow_tts.monotonic_align.core',
-                  sources=["TTS/tts/layers/glow_tts/monotonic_align/core.pyx"])]
+                  sources=["TTS/tts/layers/glow_tts/monotonic_align/core.pyx"],
+                  include_dirs=[numpy.get_include()])]
 setup(
     name='TTS',
     version=version,
