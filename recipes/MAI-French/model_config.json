@@ -1,6 +1,6 @@
 {
     "model": "Tacotron2",
-    "run_name": "mailabs-fr-ddc",
+    "run_name": "mailabs-fr-ddc-log",
     "run_description": "tacotron2 French MaiLABS with DDC and differential spectral loss. Insipred from en-ljspeech-tacotron2-ddc for Vocoder HifiGan2",
 
     // AUDIO PARAMETERS
