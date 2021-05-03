@@ -32,8 +32,8 @@ _bos = "^"
 _characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!'(),-.:;? "
 _punctuations = "!'(),-.:;? "
 
-# Phonemes definition (All IPA characters)
-_vowels = "iyɨʉɯuɪʏʊeøɘəɵɤoɛœɜɞʌɔæɐaɶɑɒᵻ"
+# Phonemes definition (All IPA characters + nazalised diacritic  ̃ on ɛ, not necessary to repeat for other vowels)
+_vowels = "iyɨʉɯuɪʏʊeøɘəɵɤoɛ̃œɜɞʌɔæɐaɶɑɒᵻ"
 _non_pulmonic_consonants = "ʘɓǀɗǃʄǂɠǁʛ"
 _pulmonic_consonants = "pbtdʈɖcɟkɡqɢʔɴŋɲɳnɱmʙrʀⱱɾɽɸβfvθðszʃʒʂʐçʝxɣχʁħʕhɦɬɮʋɹɻjɰlɭʎʟ"
 _suprasegmentals = "ˈˌːˑ"
