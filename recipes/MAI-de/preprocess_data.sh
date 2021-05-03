@@ -30,5 +30,5 @@ cp -u ${dataset_path} /tmp/tts
 # decompress
 tar -xJf /tmp/tts/eva_k.tar.xz -C /tmp/tts  --skip-old-files
 # compute dataset mean and variance for normalization
-conda activate tf
+conda activate tts
 python ../../TTS/bin/compute_statistics.py --config_path model_config.json --out_path scale_stats.npy
