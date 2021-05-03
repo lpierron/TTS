@@ -63,11 +63,20 @@ abbreviations_fr = [
         ("boul", "boulevard"),
     ]
 ] + [
-    (re.compile("\\b%s" % x[0]), x[1])
+    (re.compile("\\b%s\\b" % x[0]), x[1])
     for x in [
         ("Mlle", "mademoiselle"),
         ("Mlles", "mesdemoiselles"),
         ("Mme", "Madame"),
         ("Mmes", "Mesdames"),
+        ("H", "heure"),
+        ("h", "heure"),
     ]
+] + [
+    (re.compile("(\\d+)(%s)(\\d+)" % x[0]), r"\1%s\3" % x[1])
+    for x in [
+        ("H", "heure"),
+        ("h", "heure"),
+    ]
+
 ]
